@@ -4,10 +4,11 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './root-reducer';
 import rootSaga from './root-saga';
 import fetchMiddleware from '@base/reducer/fetch-middleware';
+import storageMiddleware from '@base/reducer/storage-middleware';
 
 const sagaMiddleware = createSagaMiddleware();
 const initialState = {};
-const middleware = [ sagaMiddleware, fetchMiddleware ];
+const middleware = [ sagaMiddleware, fetchMiddleware, storageMiddleware ];
 
 const store = createStore(
     rootReducer,

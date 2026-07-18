@@ -1,0 +1,5 @@
+export default {
+    NO_TYPE: 'NO_TYPE',
+    INVALID_MODEL_TYPE: 'INVALID_MODEL_TYPE',
+    NOT_FOUND_MODEL: 'NOT_FOUND_MODEL'
+}

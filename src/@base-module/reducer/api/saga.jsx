@@ -4,7 +4,6 @@ import { API } from './constants';
 
 function* onSuccess(apiSuccessAction) {
     const { response, success } = apiSuccessAction;
-
     if (response) {
         success.response = success.response
             ? { ...success.response, ...response }

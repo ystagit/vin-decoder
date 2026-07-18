@@ -8,17 +8,12 @@ const fetchMiddleware = (store) => (next) => (action) => {
 
     const { progress, apiConfig } = action;
 
+    const onSuccess = (response) => store.dispatch(apiConfig.onSuccess({ response }));
+    const onFailure = (response) => store.dispatch(apiConfig.onFailure({ response }));
+
     sendRequest(apiConfig, apiConfig.timeout)
-        .then((response) => apiConfig.onSuccess({
-            dispatch: store.dispatch,
-            progress,
-            response
-        }))
-        .catch((response) => apiConfig.onFailure({
-            dispatch: store.dispatch,
-            progress,
-            response
-        }));
+        .then(onSuccess)
+        .catch(onFailure);
 
     return next(action);
 }

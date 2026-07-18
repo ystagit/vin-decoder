@@ -1,0 +1,4 @@
+export default {
+    DECODE_VIN: 'DECODE_VIN',
+    VEHICLE_VARIABLES: 'VEHICLE_VARIABLES',
+}

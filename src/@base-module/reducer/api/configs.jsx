@@ -8,7 +8,9 @@ export const getApiConfig = (method, data, onSuccess, onFailure) => {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: data.body,
+        isOk: data.isOk, // my condition for successfully response (if no status)
         onSuccess: (successResponse) => {
+
             onSuccess?.(successResponse.response);
 
             return {

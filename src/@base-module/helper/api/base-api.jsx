@@ -17,43 +17,10 @@ const printResponse = ({response}) => {
     console.log('Response: ', response);
 }
 
-const handleSuccess = (response, resolve, reject) => {
-
-    if (Object.values(SuccessStatus).includes(response.status)) {
-        resolve({
-            status: response.status,
-            data: response.data
-        });
-    } else {
-        reject({
-            status: FailureStatus.NO_STATUS,
-            data: { responseType: response.type, responseStatus: response.status }
-        });
-    }
-}
-
-const handleFailure = (response, resolve, reject) => {
-
-    if (Object.values(FailureStatus).includes(response.status)) {
-        const responseData = {
-            status: response.status,
-            data: null
-        };
-
-        if (response.errors) {
-            responseData.data = {
-                errors: response.errors
-            }
-        }
-
-        reject(responseData);
-    } else {
-        reject({
-            status: FailureStatus.NO_STATUS,
-            data: { responseStatus: response.status }
-        });
-    }
-}
+const isOk = (response, config) =>
+    response?.ok
+    || response?.type === ResponseType.SUCCESS
+    || config?.isOk(response);
 
 export const sendRequest = (config, timeoutInMs = DEFAULT_TIMEOUT_IN_MS) => {
 
@@ -90,15 +57,10 @@ export const sendRequest = (config, timeoutInMs = DEFAULT_TIMEOUT_IN_MS) => {
             printResponse({ response });
             clearTimeout(timeoutId);
 
-            if (response.type === ResponseType.SUCCESS) {
-                handleSuccess(response, resolve, reject);
-            } else if (response.type === ResponseType.ERROR) {
-                handleFailure(response, resolve, reject);
+            if (isOk(response, config)) {
+                resolve(response);
             } else {
-                reject({
-                    status: FailureStatus.NO_TYPE,
-                    data: { responseType: response.type }
-                });
+                reject(response);
             }
         }).catch((e) => {
             clearTimeout(timeoutId);
