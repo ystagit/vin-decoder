@@ -23,7 +23,7 @@ const TableComponent = ({ colors, headers, items, options }) => {
     return (
         <div
             className={'table-container'}
-            style={{ 'border-color': colors.border }}
+            style={{ borderColor: colors.border }}
         >
             {!isEmptyArray(headers) &&
                 <Row>

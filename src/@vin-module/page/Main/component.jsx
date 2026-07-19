@@ -2,6 +2,7 @@ import React from 'react';
 import Row from '@base/component/Row';
 import Input from '@base/component/Input';
 import Button from '@base/component/Button';
+import Card from '@base/component/Card';
 import Table from '@base/component/Table';
 
 import { isEmptyArray } from '@base/helper/common';
@@ -31,13 +32,16 @@ const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
     return (
         <div>
             <div>
-                <Input
-                    label={'VIN-code'}
-                    value={vinCode}
-                    onChange={setVinCode} />
-                <Button
-                    name={'DECODE'}
-                    onClick={handleClick} />
+                <Card
+                    title={'DECODE VIN'}
+                    buttonName={'DECODE'}
+                    onPress={handleClick}
+                >
+                    <Input
+                        label={'VIN-code'}
+                        value={vinCode}
+                        onChange={setVinCode} />
+                </Card>
             </div>
             <Table
                 headers={['Variable', 'Value']}

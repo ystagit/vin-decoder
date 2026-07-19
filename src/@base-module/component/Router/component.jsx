@@ -2,10 +2,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from '@vin/page/Main';
 import VehicleVariables from '@vin/page/VehicleVariables';
 
+import { isEmpty } from '@base/helper/common';
 import { useInitApp } from '@base/hook/useInitApp';
 
-const RouteComponent = ({ dispatch }) => {
+const RouteComponent = ({ colors, dispatch }) => {
     useInitApp({ dispatch });
+
+    if (isEmpty(colors)) {
+        return null;
+    }
 
     return (
         <BrowserRouter>
