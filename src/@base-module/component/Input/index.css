@@ -1,0 +1,124 @@
+.input-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 100%;
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #bfbfbf;
+    opacity: 1; /* Firefox */
+}
+
+.input-body {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 1%;
+    width: 98%;
+    height: 50px;
+}
+
+.input-content {
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #000000;
+    color: #000000;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    margin: 2px;
+    width: 100%;
+    outline: none;
+}
+
+.input-content:focus {
+    border-color: rgba(7, 7, 7, 0.4);
+}
+
+.input-counter-content {
+    position: absolute;
+    background-color: transparent;
+    left: 7px;
+    bottom: -15px;
+    font-size: 12px;
+    color: #7e7e7e;
+}
+
+.input-label-content {
+    position: absolute;
+    background-color: transparent;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition-property: top;
+    transition-duration: 0.2s;
+}
+
+.input-label {
+    color: #000000;
+    font-size: 14px;
+    font-weight: revert;
+    padding: 0 3px;
+    margin: auto;
+    transition-property: font-size, font-weight;
+    transition-duration: 0.2s;
+}
+
+.disabled-input {
+    border-color: #9f9f9f;
+    color: #4d4d4d;
+}
+
+.disabled-input:focus {
+    border-color: rgba(159, 159, 159, 0.4);
+}
+
+.primitive-label {
+    color: #9f9f9f;
+}
+
+.primitive-input {
+    border-color: #309EC2;
+    color: #1c5a6e;
+}
+
+.primitive-input:focus {
+    border-color: rgba(48, 158, 194, 0.4);
+}
+
+.primitive-label {
+    color: #309EC2;
+}
+
+.error-input {
+    border-color: #cc5631;
+    color: #a83815;
+}
+
+.error-input:focus {
+    border-color: rgba(168, 56, 21, 0.4);
+}
+
+.error-label {
+    color: #cc5631;
+}
+
+.required-input {
+    color: #a83815;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

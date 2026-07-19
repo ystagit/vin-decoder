@@ -6,7 +6,7 @@ const isOk = (response) =>
 
 export const getDecodeVIN = (vinId) => get({
     host: 'https://vpic.nhtsa.dot.gov/api/',
-    path: `vehicles/decodevin/{vinId}?format=json`,
+    path: 'vehicles/decodevin/' + vinId + '?format=json',
     isOk,
     success: { type: VIN.GET_DECODE.SUCCESS },
     failure: { type: VIN.GET_DECODE.FAILURE }
