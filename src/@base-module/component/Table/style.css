@@ -1,0 +1,22 @@
+.table-container {
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+.table-header {
+    padding: 15px 0 15px 0;
+    font-weight: 700;
+    font-size: 13px;
+    color: #666
+}
+
+.table-column {
+    padding: 15px 0 15px 0;
+    min-width: 200px;
+    border-top: solid #CCC;
+}
+
+.table-value {
+    padding-left: 10px;
+}
