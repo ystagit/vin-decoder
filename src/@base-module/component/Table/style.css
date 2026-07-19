@@ -1,14 +1,13 @@
 .table-container {
-    padding: 20px;
-    border: 1px solid;
-    border-radius: 20px;
+    padding: 10px;
 }
 
 .table-header {
     padding: 15px 0 15px 0;
     font-weight: 700;
     font-size: 13px;
-    color: #666
+    color: #666;
+    border-bottom: 3px solid #CCC;
 }
 
 .table-column {
@@ -19,4 +18,5 @@
 
 .table-value {
     padding-left: 10px;
+    padding-right: 10px;
 }

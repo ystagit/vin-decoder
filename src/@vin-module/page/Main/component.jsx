@@ -6,12 +6,13 @@ import Card from '@base/component/Card';
 import Table from '@base/component/Table';
 
 import { isEmptyArray } from '@base/helper/common';
-import { isValidValue } from '@vin/helper/utils';
+import { isValidValue, isValidVariable } from '@vin/helper/utils';
 
 
 const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
     const [ vinCode, setVinCode ] = React.useState('');
     const [ result, setResult ] = React.useState([]);
+    const [ lastVinCodes, setLastVinCodes ] = React.useState([]);
 
     React.useEffect(() => {
         setVinCode('1FTFW1CT5DFC10312');
@@ -22,16 +23,20 @@ const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
             setResult([]);
         } else {
             setResult(decodeVin
-                .filter((o) => isValidValue(o.Value))
+                .filter((o) => isValidVariable(o.Variable) && isValidValue(o.Value))
                 .map((o) => [o.Variable, o.Value]));
         }
     }, [decodeVin]);
 
-    const handleClick = () => onGetDecodeVIN(vinCode);
+    const handleClick = () => {
+        onGetDecodeVIN(vinCode);
+        setLastVinCodes([ ...lastVinCodes, [vinCode] ]);
+    }
 
     return (
         <div>
-            <div>
+            <Row>
+                <div style={{ width: '50%' }}>
                 <Card
                     title={'DECODE VIN'}
                     buttonName={'DECODE'}
@@ -42,7 +47,14 @@ const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
                         value={vinCode}
                         onChange={setVinCode} />
                 </Card>
-            </div>
+                </div>
+                <div style={{ width: '50%' }}>
+                <Card title={'LAST VIN'}>
+                    <Table
+                        items={lastVinCodes} />
+                </Card>
+                </div>
+            </Row>
             <Table
                 headers={['Variable', 'Value']}
                 items={result}

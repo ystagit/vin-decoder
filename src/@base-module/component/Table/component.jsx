@@ -23,7 +23,6 @@ const TableComponent = ({ colors, headers, items, options }) => {
     return (
         <div
             className={'table-container'}
-            style={{ borderColor: colors.border }}
         >
             {!isEmptyArray(headers) &&
                 <Row>
@@ -49,7 +48,7 @@ const TableComponent = ({ colors, headers, items, options }) => {
                             className={'table-column'}
                             style={columnWidth[j] ? {
                                 width: columnWidth[j],
-                                'border-width': i === 0 ? '3px' : '2px',
+                                'border-width': i === 0 ? '0px' : '2px',
                                 color: colors.grey600
                             } : {}}
                         >

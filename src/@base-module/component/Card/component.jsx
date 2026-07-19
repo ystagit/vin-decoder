@@ -11,8 +11,6 @@ const Card = ({
     buttonName = null,
     onPress
 }) => {
-        console.log(colors)
-
     return (
         <div
             className={'card-container'}
