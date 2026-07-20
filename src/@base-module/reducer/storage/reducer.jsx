@@ -12,7 +12,7 @@ const storage = (state = {}, action) => {
         case STORAGE.SAVE.SUCCESS:
             return {
                 ...state,
-                ...action.item?.model ?? {}
+                ...action.item ?? {}
             };
         case STORAGE.CLEAN:
             state = { ...state };
@@ -21,7 +21,7 @@ const storage = (state = {}, action) => {
         case STORAGE.REMOVE.SUCCESS:
             const clonedState = { ...state };
 
-            for (let key in action.item.model) {
+            for (let key in action.item) {
                 if (clonedState[key]) {
                     clonedState[key] = null;
                 }

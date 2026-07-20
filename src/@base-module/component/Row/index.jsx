@@ -5,6 +5,7 @@ const Row = forwardRef(({
         id,
         w,
         h,
+        wrap,
         horizontalAlign,
         verticalAlign,
         className,
@@ -27,6 +28,7 @@ const Row = forwardRef(({
                 alignItems: verticalAlign ?? 'start',
                 flexDirection: 'row',
                 justifyContent: horizontalAlign,
+                flexWrap: wrap ? 'wrap' : 'none',
                 width: w,
                 height: h,
                 ...style

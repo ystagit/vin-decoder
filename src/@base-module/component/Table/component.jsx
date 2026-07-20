@@ -48,7 +48,7 @@ const TableComponent = ({ colors, headers, items, options }) => {
                             className={'table-column'}
                             style={columnWidth[j] ? {
                                 width: columnWidth[j],
-                                'border-width': i === 0 ? '0px' : '2px',
+                                borderWidth: i === 0 ? '0px' : '2px',
                                 color: colors.grey600
                             } : {}}
                         >

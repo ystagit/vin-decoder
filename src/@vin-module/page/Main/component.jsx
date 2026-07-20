@@ -4,17 +4,24 @@ import Input from '@base/component/Input';
 import Button from '@base/component/Button';
 import Card from '@base/component/Card';
 import Table from '@base/component/Table';
+import List from '@base/component/List';
 
 import { isEmptyArray } from '@base/helper/common';
 import { isValidValue, isValidVariable } from '@vin/helper/utils';
 
 
-const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
+const MainComponent = ({
+    decodeVin,
+    lastThreeVinList,
+    onLoad,
+    onGetDecodeVIN,
+}) => {
     const [ vinCode, setVinCode ] = React.useState('');
     const [ result, setResult ] = React.useState([]);
     const [ lastVinCodes, setLastVinCodes ] = React.useState([]);
 
     React.useEffect(() => {
+        onLoad();
         setVinCode('1FTFW1CT5DFC10312');
     }, [])
 
@@ -28,32 +35,27 @@ const MainComponent = ({ decodeVin, onGetDecodeVIN }) => {
         }
     }, [decodeVin]);
 
-    const handleClick = () => {
-        onGetDecodeVIN(vinCode);
-        setLastVinCodes([ ...lastVinCodes, [vinCode] ]);
-    }
+    const handleClick = (code) =>
+        onGetDecodeVIN(code);
 
     return (
         <div>
-            <Row>
-                <div style={{ width: '50%' }}>
+            <Row wrap>
                 <Card
                     title={'DECODE VIN'}
                     buttonName={'DECODE'}
-                    onPress={handleClick}
+                    onPress={() => handleClick(vinCode)}
                 >
                     <Input
                         label={'VIN-code'}
                         value={vinCode}
                         onChange={setVinCode} />
                 </Card>
-                </div>
-                <div style={{ width: '50%' }}>
                 <Card title={'LAST VIN'}>
-                    <Table
-                        items={lastVinCodes} />
+                    <List
+                        items={lastThreeVinList}
+                        onClick={handleClick} />
                 </Card>
-                </div>
             </Row>
             <Table
                 headers={['Variable', 'Value']}

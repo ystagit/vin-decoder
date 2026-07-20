@@ -1,7 +1,7 @@
 import StorageErrors from './storage-errors';
 import storages from '@/storages'
 
-const existsByType = (type) => !storages?.[type];
+const existsByType = (type) => !!storages?.[type];
 
 const buildItem = (type, data) =>
     existsByType(type) ? {
@@ -15,12 +15,11 @@ const buildItem = (type, data) =>
 export const save = (type, data) =>
     new Promise((resolve, reject) => {
         const item = buildItem(type, data);
-
         if (item) {
             if (typeof item.model === 'object') {
                 localStorage.setItem(item.type, JSON.stringify(item.model));
-                console.info("Storage:: Saved item: ", item.name);
-                resolve(item);
+                console.info("Storage:: Saved item: ", item);
+                resolve(item.model);
             } else {
                 reject(StorageErrors.INVALID_MODEL_TYPE);
             }

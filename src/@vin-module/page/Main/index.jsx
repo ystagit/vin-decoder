@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
-import { getDecodeVIN } from '@vin/reducer/vin/actions';
+import { getDecodeVIN, loadLastThreeVinList } from '@vin/reducer/vin/actions';
 import StorageType from '@/storages';
 
 import MainComponent from './component';
 
 const mapStateToProps = (state) => ({
-    decodeVin: state.storage[StorageType.DECODE_VIN]
+    decodeVin: state.storage[StorageType.DECODE_VIN],
+    lastThreeVinList: state.storage[StorageType.LAST_THREE_VIN],
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    onLoad: () => {
+        dispatch(loadLastThreeVinList());
+    },
     onGetDecodeVIN: (id) =>
         dispatch(getDecodeVIN(id))
 })

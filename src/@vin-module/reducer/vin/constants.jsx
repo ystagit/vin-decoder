@@ -1,4 +1,7 @@
 export const VIN = {
+    LOAD: {
+        LAST_THREE_VIN: 'LOAD_LAST_THREE_VIN'
+    },
     GET_DECODE: {
         SUCCESS: 'GET_DECODE_VIN_SUCCESS',
         FAILURE: 'GET_DECODE_VIN_FAILURE',

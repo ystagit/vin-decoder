@@ -19,3 +19,7 @@ export const getVehicleVariableList = () => get({
     success: { type: VIN.GET_VEHICLE_VARIABLES.SUCCESS },
     failure: { type: VIN.GET_VEHICLE_VARIABLES.FAILURE }
 })
+
+export const loadLastThreeVinList = () => ({
+    type: VIN.LOAD.LAST_THREE_VIN
+})

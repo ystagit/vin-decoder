@@ -3,6 +3,8 @@
     border-radius: 20px;
     background-color: white;
     margin: 1%;
+    flex: 1;
+    min-width: 400px;
     /*width: 250px;*/
     /*height: 380px;*/
     /*cursor: pointer;*/

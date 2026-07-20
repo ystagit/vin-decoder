@@ -1,7 +1,7 @@
 import { STORAGE } from './constants';
 
 
-const createStorageConfig = (type, mode) => ({ type, model })
+const createStorageConfig = (type, model) => ({ type, model })
 
 const createStorageAction = (type, entityType, entityModel, callback) => ({
     type,
