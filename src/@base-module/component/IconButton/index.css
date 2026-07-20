@@ -1,0 +1,16 @@
+.icon-button-content {
+    display: inline-block;
+    /*background: #FFF;*/
+    text-decoration: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    cursor: pointer;
+    background: transparent;
+    border-width: 0;
+    color: #4d4d4d;
+}
+
+.icon-button-content:hover {
+    color: #888888;
+}

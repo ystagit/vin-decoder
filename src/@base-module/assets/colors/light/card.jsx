@@ -1,5 +1,5 @@
 export default {
-    title: '#0891b2',
-    border: '#0891b2',
+    title: '#5e5e5e',
+    border: '#E0E0E0',
     button: '#0891b2',
 }

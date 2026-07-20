@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from '@base/component/Router/Layout'
 import Main from '@vin/page/Main';
 import VehicleVariables from '@vin/page/VehicleVariables';
 
@@ -15,7 +16,7 @@ const RouteComponent = ({ colors, dispatch }) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={'/'} >
+                <Route path={'/'} element={<Layout showTabs={true} />}>
                     <Route index element={<Main />} />
                     <Route path={'/variables'} element={<VehicleVariables />} />
                 </Route>
