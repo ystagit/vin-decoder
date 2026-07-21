@@ -27,7 +27,7 @@ const Card = ({
             <div className={'card-content'}>
                 {children}
             </div>
-            {onPress &&
+            {onPress ? (
                 <div className={'card-bottom'}>
                     <Button
                         name={buttonName ?? 'OK'}
@@ -37,6 +37,9 @@ const Card = ({
                         }}
                         onClick={onPress} />
                 </div>
+                ) : (
+                    <div className={'card-bottom'} />
+                )
             }
         </div>
     )

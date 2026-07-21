@@ -7,9 +7,10 @@ import StorageType from '@/storages';
 
 function* onGetDecodeVin(action) {
     yield put(setItem(StorageType.DECODE_VIN, action.response.Results));
-    const searchCriteria = action?.response?.SearchCriteria;
+    const response = action?.response;
+    const searchCriteria = response?.SearchCriteria;
 
-    if (searchCriteria) {
+    if (response?.saveLastVin && searchCriteria) {
         const vin = searchCriteria.split(':')?.[1] ?? null;
 
         if (vin) {

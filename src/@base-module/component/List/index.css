@@ -3,12 +3,17 @@
 
 .list-item {
     cursor: pointer;
-    padding: 10px 15px 10px 15px;
     text-align: center;
 }
 
-.list-item:hover {
-    border-color: rgba(48, 158, 194, 0.7);
-    color: rgba(48, 158, 194, 0.7);
+.grey-list-item {
     background: rgba(200, 200, 200, 0.2);
+}
+
+.selected-list-item {
+    background: var(--selected-list-item);
+}
+
+.list-item:hover {
+    background: var(--hover-list-item);
 }

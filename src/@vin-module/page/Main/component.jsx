@@ -4,7 +4,7 @@ import Input from '@base/component/Input';
 import Button from '@base/component/Button';
 import Card from '@base/component/Card';
 import Table from '@base/component/Table';
-import List from '@base/component/List';
+import LastVin from '@vin/component/LastVin';
 
 import { isEmptyArray } from '@base/helper/common';
 import { isValidValue, isValidVariable } from '@vin/helper/utils';
@@ -18,7 +18,6 @@ const MainComponent = ({
 }) => {
     const [ vinCode, setVinCode ] = React.useState('');
     const [ result, setResult ] = React.useState([]);
-    const [ lastVinCodes, setLastVinCodes ] = React.useState([]);
 
     React.useEffect(() => {
         onLoad();
@@ -35,8 +34,8 @@ const MainComponent = ({
         }
     }, [decodeVin]);
 
-    const handleClick = (code) =>
-        onGetDecodeVIN(code);
+    const handleClickDecode = () =>
+        onGetDecodeVIN(vinCode, true);
 
     return (
         <div>
@@ -44,18 +43,14 @@ const MainComponent = ({
                 <Card
                     title={'DECODE VIN'}
                     buttonName={'DECODE'}
-                    onPress={() => handleClick(vinCode)}
+                    onPress={handleClickDecode}
                 >
                     <Input
                         label={'VIN-code'}
                         value={vinCode}
                         onChange={setVinCode} />
                 </Card>
-                <Card title={'LAST VIN'}>
-                    <List
-                        items={lastThreeVinList}
-                        onClick={handleClick} />
-                </Card>
+                <LastVin />
             </Row>
             <Table
                 headers={['Variable', 'Value']}

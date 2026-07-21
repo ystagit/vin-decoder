@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => ({
     onLoad: () => {
         dispatch(loadLastThreeVinList());
     },
-    onGetDecodeVIN: (id) =>
-        dispatch(getDecodeVIN(id))
+    onGetDecodeVIN: (id, saveLastVin) =>
+        dispatch(getDecodeVIN(id, saveLastVin))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainComponent);
