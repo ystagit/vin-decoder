@@ -4,6 +4,7 @@ import table from './table';
 import tab from './tab';
 import contentState from './content-state';
 import input from './input';
+import message from './message';
 
 export default {
     text: '#0891b2',
@@ -15,4 +16,5 @@ export default {
     tab,
     contentState,
     input,
+    message,
 }
