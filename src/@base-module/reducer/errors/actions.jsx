@@ -1,7 +1,7 @@
 import { VALIDATOR } from './constants'
 
-export const validateField = (name, props) => {
-    return { type: VALIDATOR.VALIDATE.FIELD, name, props }
+export const validateField = (name, props, onPassed, onError) => {
+    return { type: VALIDATOR.VALIDATE.FIELD, name, props, onPassed, onError }
 }
 
 export const removeErrors = () => {

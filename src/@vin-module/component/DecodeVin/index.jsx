@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getDecodeVIN } from '@vin/reducer/vin/actions';
+import { validateField } from '@base/reducer/errors/actions';
 import StorageType from '@/storages';
 
 import DecodeVinComponent from './component';
@@ -9,6 +10,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    onValidateVinCode: (value, onPassed) =>
+        dispatch(validateField('vinCode', { value }, onPassed)),
     onGetDecodeVIN: (id, saveLastVin) =>
         dispatch(getDecodeVIN(id, saveLastVin))
 })

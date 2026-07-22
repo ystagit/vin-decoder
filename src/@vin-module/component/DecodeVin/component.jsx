@@ -6,16 +6,18 @@ import Card from '@base/component/Card';
 
 const DecodeVinComponent = ({
     decodeVin,
+    onValidateVinCode,
     onGetDecodeVIN,
 }) => {
     const [ vinCode, setVinCode ] = React.useState('');
 
     React.useEffect(() => {
-        setVinCode('1FTFW1CT5DFC10312');
+        setVinCode('');
     }, [])
 
     const handleClickDecode = () =>
-        onGetDecodeVIN(vinCode, true);
+        onValidateVinCode(vinCode,
+            () => onGetDecodeVIN(vinCode, true))
 
     return (
         <Card

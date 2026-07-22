@@ -2,6 +2,8 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import { VALIDATOR } from './constants';
 import { returnErrors } from './actions';
 import { validateOne } from './validator';
+import { isEmpty } from '@base/helper/common';
+
 
 let errors = {}
 
@@ -10,13 +12,20 @@ function* onValidateField(action) {
     if (errors[name])  { delete errors[name]; }
 
     validateOne(name, props, errors);
-    yield put (returnErrors(errors));
+
+    if (isEmpty(errors)) {
+        action.onPassed?.();
+    } else {
+        action.onError?.();
+    }
+
+    yield put(returnErrors(errors));
 }
 
 function* onRemoveErrors(action) {
     errors = {}; // Clears errors
     console.info('Removed all errors');
-    yield put (returnErrors(errors));
+    yield put(returnErrors(errors));
 }
 
 export default function* watchErrors() {
