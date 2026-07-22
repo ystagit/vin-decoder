@@ -5,6 +5,8 @@ const vinCode = ({ value }, errors) => {
         errors['vinCode'] = 'VIN-code is an empty';
     } else if (value.length > 17) {
         errors['vinCode'] = 'Maximum 17 characters'
+    } else if (!/^[a-zA-Z0-9]+$/.test(value)) {
+        errors['vinCode'] = 'Contains forbidden characters';
     }
 }
 
