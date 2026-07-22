@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from '@base/component/Row';
 import IconButton from '@base/component/IconButton';
+import ContentState from '@base/component/ContentState';
 
 import { isEmptyArray } from '@base/helper/common';
 import './style.css';
@@ -20,6 +21,12 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
             }
         }
     }, [headers]);
+
+    if (isEmptyArray(items)) {
+        return (
+            <ContentState title={'NO DATA'} />
+        )
+    }
 
     return (
         <div

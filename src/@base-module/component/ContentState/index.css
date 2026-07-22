@@ -1,0 +1,19 @@
+.content-state-container {
+    display: flex;
+    justify-content: center;
+}
+
+.content-state-box {
+    padding: 15px 40px 15px 40px;
+    border: 1px solid;
+    border-color: var(--content-state-border-color);
+    background: var(--content-state-background-color);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.content-state-title {
+    color: var(--content-state-title-color);
+    font-weight: 700;
+}
