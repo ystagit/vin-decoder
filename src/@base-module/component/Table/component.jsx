@@ -22,12 +22,6 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
         }
     }, [headers]);
 
-    if (isEmptyArray(items)) {
-        return (
-            <ContentState title={'NO DATA'} />
-        )
-    }
-
     return (
         <div
             className={'table-container'}
@@ -64,7 +58,9 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
                     })}
                 </Row>
             }
-            {items?.map((innerItems, i) => (
+            {isEmptyArray(items) ? (
+                <ContentState containerStyle={{ padding: '10px' }} title={'NO DATA'} />
+            ) : items?.map((innerItems, i) => (
                 <Row key={'row-' + i} >
                     {headers?.map((item, j) => {
                         if (headers[j].includes('ICON:')) {
@@ -84,7 +80,7 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
                                         onClick={() => onClick({
                                             index: i,
                                             name: headers[j],
-                                            value: innerItems[j],
+                                            result: innerItems,
                                         })} />
                                 </div>
                             )

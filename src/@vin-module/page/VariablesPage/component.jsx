@@ -22,8 +22,12 @@ const VariablesPageComponent = ({ vehicleVariables, onGetVehicleVariableList }) 
         }
     }, [vehicleVariables]);
 
-    const handleOpenVariableDetails = ({ value }) => {
-        navigate(`/variables/${value}`);
+    const handleOpenVariableDetails = ({ result }) => {
+        navigate(`/variables/${result[0]}`, {
+            state: {
+                elementName: result[1]?.toUpperCase()
+            }
+        });
     }
 
     return (

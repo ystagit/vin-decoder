@@ -1,9 +1,12 @@
 import './index.css';
 
-const ContentStateComponent = ({ colors, title, description }) => {
+const ContentStateComponent = ({ colors, title, containerStyle }) => {
 
     return (
-        <div className={'content-state-container'}>
+        <div
+            className={'content-state-container'}
+            style={containerStyle}
+        >
             <div
                 className={'content-state-box'}
                 style={{

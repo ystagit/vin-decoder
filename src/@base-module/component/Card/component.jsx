@@ -19,7 +19,11 @@ const Card = ({
             {title &&
                 <div
                     className={'card-title'}
-                    style={{ color: colors.card.title }}
+                    style={{
+                        color: colors.card.title,
+                        borderColor: colors.card.titleBorder,
+                        background: colors.card.titleBackground,
+                    }}
                 >
                     {title}
                 </div>

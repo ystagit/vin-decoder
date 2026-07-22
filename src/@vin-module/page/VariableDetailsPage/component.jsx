@@ -2,26 +2,35 @@ import React from 'react';
 import Table from '@base/component/Table';
 
 import { isEmptyArray } from '@base/helper/common';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 
 const VariableDetailsPageComponent = ({
     variableDetails,
-    onGetVariableDetails
+    onGetVariableDetails,
+    onClean
 }) => {
     const [ headers, setHeaders ] = React.useState([]);
     const [ result, setResult ] = React.useState([]);
     const { variableId } = useParams();
+    const location = useLocation();
 
     React.useEffect(() => {
         onGetVariableDetails(variableId);
+
+        return () => {
+            onClean();
+        }
     }, []);
 
     React.useEffect(() => {
+        const { elementName } = location.state || {};
+
         if (isEmptyArray(variableDetails)) {
+            setHeaders([ elementName ]);
             setResult([]);
         } else {
-            setHeaders([ variableDetails[0].ElementName ]);
+            setHeaders([ elementName ]);
             setResult(variableDetails.map((o) => [o.Name, o.Id]));
         }
     }, [variableDetails]);

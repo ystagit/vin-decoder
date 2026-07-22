@@ -1,12 +1,12 @@
 .button-content {
     border: none;
-    border-bottom: 1px solid #04AA6D;
-    border-top: 1px solid #04AA6D;
+    border: 1px solid;
+    border-radius: 20px;
     background-color: white;
     font-size: 16px;
     font-weight: bold;
     color: #04AA6D;
-    padding: 7px 15px 7px 15px;
+    padding: 10px 20px 10px 20px;
     margin-bottom: 10px;
     cursor: pointer;
 }
@@ -14,48 +14,7 @@
 .button-content:hover {
     border-color: #71a994;
     color: #71a994;
-}
-
-.button-primitive {
-    border-color: #309EC2;
-    color: #309EC2;
-}
-
-.button-primitive:hover {
-    border-color: rgba(48, 158, 194, 0.7);
-    color: rgba(48, 158, 194, 0.7);
     border-top-width: 2px;
     border-bottom-width: 2px;
-    padding: 6px 15px 6px 15px;
-}
-
-.button-primitive:active {
-    border-color: rgba(48, 158, 194, 0.8);
-    color: rgba(48, 158, 194, 0.8);
-}
-
-.button-add {
-    border-color: #04AA6D;
-    color: #04AA6D;
-}
-
-.button-add:hover {
-    border-color: rgba(4, 170, 109, 0.8);
-    color: rgba(4, 170, 109, 0.8);
-}
-
-.button-add:active {
-    border-color: rgba(4, 170, 109, 0.9);
-    color: rgba(4, 170, 109, 0.9);
-}
-
-.button-disabled {
-    border-color: #b7b7b7;
-    color: #b7b7b7;
-    cursor: not-allowed;
-}
-
-.button-disabled:hover {
-    border-color: #b6b6b6;
-    color: #b6b6b6;
+    padding: 9px 20px 9px 20px;
 }

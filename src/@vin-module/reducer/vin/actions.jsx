@@ -31,3 +31,7 @@ export const getVariableDetails = (id) => get({
 export const loadLastThreeVinList = () => ({
     type: VIN.LOAD.LAST_THREE_VIN
 })
+
+export const clean = (storageType) => ({
+    type: VIN.CLEAN.STORAGE_TYPE, storageType
+})

@@ -10,7 +10,6 @@ const LastVinComponent = ({
     lastThreeVinList,
     onGetDecodeVIN
 }) => {
-    lastThreeVinList = [];
     const [selected, setSelected] = React.useState(null);
 
     const handleClickLastVin = (code, index) => {

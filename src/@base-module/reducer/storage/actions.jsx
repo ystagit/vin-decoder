@@ -25,5 +25,5 @@ export const getItem = (type, callback) =>
 export const setItem = (type, data) =>
     ({ type: STORAGE.SET, itemType: type, data });
 
-export const cleanItem = (type, data) =>
+export const cleanItem = (type) =>
     ({ type: STORAGE.CLEAN, itemType: type });

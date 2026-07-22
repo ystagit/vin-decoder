@@ -5,6 +5,7 @@ import Button from '@base/component/Button';
 import Card from '@base/component/Card';
 import Table from '@base/component/Table';
 import LastVin from '@vin/component/LastVin';
+import DecodedVinResult from '@vin/component/DecodedVinResult';
 
 import { isEmptyArray } from '@base/helper/common';
 import { isValidValue, isValidVariable } from '@vin/helper/utils';
@@ -52,10 +53,7 @@ const VinDecoderPageComponent = ({
                 </Card>
                 <LastVin />
             </Row>
-            <Table
-                headers={['Variable', 'Value']}
-                items={result}
-                options={{ columnWidth: ['25%', '75%'] }} />
+            <DecodedVinResult />
         </div>
     )
 }

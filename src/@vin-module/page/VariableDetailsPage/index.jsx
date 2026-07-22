@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getVariableDetails } from '@vin/reducer/vin/actions';
+import { getVariableDetails, clean } from '@vin/reducer/vin/actions';
 import StorageType from '@/storages';
 
 import VariableDetailsPageComponent from './component';
@@ -10,7 +10,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onGetVariableDetails: (id) =>
-        dispatch(getVariableDetails(id))
+        dispatch(getVariableDetails(id)),
+    onClean: () =>
+        dispatch(clean(StorageType.VARIABLE_DETAILS))
 })
 
 export default connect(

@@ -1,6 +1,6 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 import { VIN } from './constants';
-import { setItem, getItem, saveItem } from '@base/reducer/storage/actions';
+import { setItem, getItem, saveItem, cleanItem } from '@base/reducer/storage/actions';
 import { getLastThreeVinList } from '@base/helper/store';
 import StorageType from '@/storages';
 
@@ -38,11 +38,18 @@ function* onGetVariableDetails(action) {
     yield put(setItem(StorageType.VARIABLE_DETAILS, action.response.Results));
 }
 
+function* onClean(action) {
+    if (action.storageType) {
+        yield put(cleanItem(action.storageType));
+    }
+}
+
 export default function* watchVin() {
     yield all([
         yield takeLatest(VIN.GET_DECODE.SUCCESS, onGetDecodeVin),
         yield takeLatest(VIN.GET_VEHICLE_VARIABLES.SUCCESS, onGetVehicleVariables),
         yield takeLatest(VIN.GET_VARIABLE_DETAILS.SUCCESS, onGetVariableDetails),
         yield takeLatest(VIN.LOAD.LAST_THREE_VIN, onLoadThreeVinList),
+        yield takeLatest(VIN.CLEAN.STORAGE_TYPE, onClean),
     ])
 }
