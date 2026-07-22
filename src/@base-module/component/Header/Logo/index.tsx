@@ -14,8 +14,8 @@ const Logo = ({}) => {
             onClick={handleClick}
         >
             <img src={logo}
-                 width={'100px'}
-                 height={'45px'} />
+                 width={'75px'}
+                 height={'35px'} />
         </button>
     )
 }

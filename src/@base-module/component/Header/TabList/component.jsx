@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import Icon from '@base/component/Icon';
+import Row from '@base/component/Row';
 
+import { useWindowWidth } from '@base/hook/useWindowWidth';
 import './index.css';
 
 
 const TabListComponent = ({ colors, tabs }) => {
+    const windowWidth = useWindowWidth();
 
     return (
         <div
@@ -25,7 +29,19 @@ const TabListComponent = ({ colors, tabs }) => {
                         '--hover-tab-background': colors.tab.hoverBackground,
                     }}
                 >
-                    {tab.label}
+                    <Row>
+                        {tab.iconName &&
+                            <Icon
+                                name={tab.iconName}
+                                w={'18px'}
+                                h={'18px'} />
+                        }
+                        {windowWidth > 600 &&
+                            <span style={{ paddingLeft: '5px' }}>
+                                {tab.label}
+                            </span>
+                        }
+                    </Row>
                 </NavLink>
             ))}
         </div>
