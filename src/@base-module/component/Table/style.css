@@ -18,6 +18,23 @@
     border-color: var(--table-border-color);
 }
 
+.table-row {
+    opacity: 0;
+    animation: rowAppear 0.7s ease-out forwards;
+}
+
+@keyframes rowAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .table-column {
     padding: 15px 0 15px 0;
     min-width: 200px;

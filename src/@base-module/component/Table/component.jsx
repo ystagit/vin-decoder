@@ -61,7 +61,7 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
             {isEmptyArray(items) ? (
                 <ContentState containerStyle={{ padding: '10px' }} title={'NO DATA'} />
             ) : items?.map((innerItems, i) => (
-                <Row key={'row-' + i} >
+                <Row key={'row-' + i} className={'table-row'} >
                     {headers?.map((item, j) => {
                         if (headers[j].includes('ICON:')) {
                             return (
