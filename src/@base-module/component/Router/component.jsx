@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RouteListener from '@base/listener/RouteListener';
 import Layout from '@base/component/Router/Layout';
+import NotFoundPage from '@base/page/NotFoundPage';
 import VinDecoderPage from '@vin/page/VinDecoderPage';
 import VariablesPage from '@vin/page/VariablesPage';
 import VariableDetailsPage from '@vin/page/VariableDetailsPage';
@@ -22,7 +23,8 @@ const RouteComponent = ({ colors, dispatch }) => {
                 <Route path={'/'} element={<Layout showTabs={true} />}>
                     <Route index element={<VinDecoderPage />} />
                     <Route path={'/variables'} element={<VariablesPage />} />
-                    <Route path="/variables/:variableId" element={<VariableDetailsPage />} />
+                    <Route path={'/variables/:variableId'} element={<VariableDetailsPage />} />
+                    <Route path={'*'} element={<NotFoundPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>

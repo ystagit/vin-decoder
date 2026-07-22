@@ -29,10 +29,10 @@ const VariableDetailsPageComponent = ({
         const { elementName } = location.state || {};
 
         if (isEmptyArray(variableDetails)) {
-            setHeaders([ elementName ]);
+            setHeaders([ elementName ?? 'NO NAME' ]);
             setResult([]);
         } else {
-            setHeaders([ elementName ]);
+            setHeaders([ elementName ?? 'NO NAME' ]);
             setResult(variableDetails.map((o) => [o.Name, o.Id]));
         }
     }, [variableDetails]);
