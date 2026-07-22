@@ -8,16 +8,34 @@
     font-size: 13px;
     color: #666;
     min-width: 200px;
-    border-bottom: 3px solid #CCC;
+    border-bottom: 3px solid;
+    border-color: var(--table-border-color);
+}
+
+.empty-table-header {
+    height: 46px;
+    border-bottom: 3px solid;
+    border-color: var(--table-border-color);
 }
 
 .table-column {
     padding: 15px 0 15px 0;
     min-width: 200px;
-    border-top: solid #CCC;
+    border-top: solid;
+    border-color: var(--table-border-color);
 }
 
 .table-value {
     padding-left: 10px;
     padding-right: 10px;
+    overflow-wrap: break-word;
+}
+
+.table-icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    border-top: 2px solid;
+    border-color: var(--table-border-color);
 }

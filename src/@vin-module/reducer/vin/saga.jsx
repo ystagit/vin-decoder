@@ -34,10 +34,15 @@ function* onGetVehicleVariables(action) {
     yield put(setItem(StorageType.VEHICLE_VARIABLES, action.response.Results));
 }
 
+function* onGetVariableDetails(action) {
+    yield put(setItem(StorageType.VARIABLE_DETAILS, action.response.Results));
+}
+
 export default function* watchVin() {
     yield all([
         yield takeLatest(VIN.GET_DECODE.SUCCESS, onGetDecodeVin),
         yield takeLatest(VIN.GET_VEHICLE_VARIABLES.SUCCESS, onGetVehicleVariables),
+        yield takeLatest(VIN.GET_VARIABLE_DETAILS.SUCCESS, onGetVariableDetails),
         yield takeLatest(VIN.LOAD.LAST_THREE_VIN, onLoadThreeVinList),
     ])
 }

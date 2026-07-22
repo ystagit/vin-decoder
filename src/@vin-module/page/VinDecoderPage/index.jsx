@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getDecodeVIN, loadLastThreeVinList } from '@vin/reducer/vin/actions';
 import StorageType from '@/storages';
 
-import MainComponent from './component';
+import VinDecoderPageComponent from './component';
 
 const mapStateToProps = (state) => ({
     decodeVin: state.storage[StorageType.DECODE_VIN],
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(getDecodeVIN(id, saveLastVin))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(VinDecoderPageComponent);

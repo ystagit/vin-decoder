@@ -12,5 +12,5 @@
 }
 
 .icon-button-content:hover {
-    color: #888888;
+    opacity: 0.5;
 }

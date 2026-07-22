@@ -1,11 +1,12 @@
 import React from 'react';
 import Row from '@base/component/Row';
+import IconButton from '@base/component/IconButton';
 
 import { isEmptyArray } from '@base/helper/common';
 import './style.css';
 
 
-const TableComponent = ({ colors, headers, items, options }) => {
+const TableComponent = ({ colors, headers, items, options, onClick }) => {
     const [ columnWidth, setColumnWidth ] = React.useState([]);
 
     React.useEffect(() => {
@@ -15,10 +16,10 @@ const TableComponent = ({ colors, headers, items, options }) => {
                 setColumnWidth(options.columnWidth);
             } else {
                 const w = (100 / length) + '%';
-                setColumnWidth(items[0]?.map((o) => w));
+                setColumnWidth(headers?.map((o) => w));
             }
         }
-    }, [items]);
+    }, [headers]);
 
     return (
         <div
@@ -26,37 +27,79 @@ const TableComponent = ({ colors, headers, items, options }) => {
         >
             {!isEmptyArray(headers) &&
                 <Row>
-                    {headers?.map((item, i) => (
-                        <div
-                            key={'header-' + i}
-                            className={'table-header'}
-                            style={columnWidth[i] ? {
-                                width: columnWidth[i],
-                                color: colors.text
-                            } : {}}
-                        >
-                            {item?.toUpperCase()}
-                        </div>
-                    ))}
+                    {headers?.map((item, i) => {
+                        if (headers[i].includes('ICON:')) {
+                            return (
+                                <div
+                                    key={'header-' + i}
+                                    className={'empty-table-header'}
+                                    style={{
+                                        width: columnWidth[i],
+                                        '--table-border-color': colors.table.border,
+                                    }}>
+                                </div>
+                            )
+                        }
+
+                        return (
+                            <div
+                                key={'header-' + i}
+                                className={'table-header'}
+                                style={columnWidth[i] ? {
+                                    width: columnWidth[i],
+                                    color: colors.table.header,
+                                    '--table-border-color': colors.table.border,
+                                } : {}}
+                            >
+                                {item?.toUpperCase()}
+                            </div>
+                        )
+                    })}
                 </Row>
             }
             {items?.map((innerItems, i) => (
                 <Row key={'row-' + i} >
-                    {innerItems?.map((item, j) => (
-                        <div
-                            key={'column-' + j}
-                            className={'table-column'}
-                            style={columnWidth[j] ? {
-                                width: columnWidth[j],
-                                borderWidth: i === 0 ? '0px' : '2px',
-                                color: colors.grey600
-                            } : {}}
-                        >
-                            <div className={'table-value'}>
-                                {item}
+                    {headers?.map((item, j) => {
+                        if (headers[j].includes('ICON:')) {
+                            return (
+                                <div
+                                    key={'column-' + j}
+                                    className={'table-icon'}
+                                    style={columnWidth[j] ? {
+                                        width: columnWidth[j],
+                                        borderWidth: i === 0 ? '0px' : '2px',
+                                        '--table-border-color': colors.table.border,
+                                    } : {}}
+                                >
+                                    <IconButton
+                                        style={{ color: colors.table.icon }}
+                                        name={headers[j].split(':')[1]}
+                                        onClick={() => onClick({
+                                            index: i,
+                                            name: headers[j],
+                                            value: innerItems[j],
+                                        })} />
+                                </div>
+                            )
+                        }
+
+                        return (
+                            <div
+                                key={'column-' + j}
+                                className={'table-column'}
+                                style={columnWidth[j] ? {
+                                    width: columnWidth[j],
+                                    borderWidth: i === 0 ? '0px' : '2px',
+                                    color: colors.table.text,
+                                    '--table-border-color': colors.table.border,
+                                } : {}}
+                            >
+                                <div className={'table-value'}>
+                                    {innerItems[j]}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </Row>
             ))}
         </div>

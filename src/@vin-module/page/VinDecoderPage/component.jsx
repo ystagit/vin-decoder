@@ -10,7 +10,7 @@ import { isEmptyArray } from '@base/helper/common';
 import { isValidValue, isValidVariable } from '@vin/helper/utils';
 
 
-const MainComponent = ({
+const VinDecoderPageComponent = ({
     decodeVin,
     lastThreeVinList,
     onLoad,
@@ -60,4 +60,4 @@ const MainComponent = ({
     )
 }
 
-export default MainComponent;
+export default VinDecoderPageComponent;

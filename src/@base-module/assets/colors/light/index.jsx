@@ -1,5 +1,7 @@
 import card from './card';
 import list from './list';
+import table from './table';
+import tab from './tab';
 
 export default {
     text: '#0891b2',
@@ -7,4 +9,6 @@ export default {
     border: '#0891b2',
     card,
     list,
+    table,
+    tab,
 }

@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from '@base/component/Router/Layout'
-import Main from '@vin/page/Main';
-import VehicleVariables from '@vin/page/VehicleVariables';
+import VinDecoderPage from '@vin/page/VinDecoderPage';
+import VariablesPage from '@vin/page/VariablesPage';
+import VariableDetailsPage from '@vin/page/VariableDetailsPage';
 
 import { isEmpty } from '@base/helper/common';
 import { useInitApp } from '@base/hook/useInitApp';
@@ -17,8 +18,9 @@ const RouteComponent = ({ colors, dispatch }) => {
         <BrowserRouter>
             <Routes>
                 <Route path={'/'} element={<Layout showTabs={true} />}>
-                    <Route index element={<Main />} />
-                    <Route path={'/variables'} element={<VehicleVariables />} />
+                    <Route index element={<VinDecoderPage />} />
+                    <Route path={'/variables'} element={<VariablesPage />} />
+                    <Route path="/variables/:variableId" element={<VariableDetailsPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
