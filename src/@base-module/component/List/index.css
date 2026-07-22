@@ -7,13 +7,13 @@
 }
 
 .grey-list-item {
-    background: rgba(200, 200, 200, 0.2);
+    background: rgba(200, 200, 200, 0.1);
 }
 
 .selected-list-item {
-    background: var(--selected-list-item);
+    background: var(--selected-list-item-color);
 }
 
 .list-item:hover {
-    background: var(--hover-list-item);
+    background: var(--hover-list-item-color);
 }

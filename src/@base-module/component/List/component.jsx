@@ -21,9 +21,9 @@ const ListComponent = ({
                         ${(index % 2) === 0 && 'grey-list-item'}
                         ${selected === index && 'selected-list-item'}`}
                     style={{
-                        color: colors.list.text,
-                        '--hover-list-item': colors.list.hover,
-                        '--selected-list-item': colors.list.selected
+                        color: selected === index ? colors.list.selectedText : colors.list.text,
+                        '--hover-list-item-color': colors.list.hover,
+                        '--selected-list-item-color': colors.list.selected
                     }}
                     key={'list-item: ' + index}
                     onClick={() => onClick(item, index)}
