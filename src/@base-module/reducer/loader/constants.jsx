@@ -1,0 +1,5 @@
+export const LOADER = {
+    SHOW: "VISIBLE_LOADER",
+    HIDE: "HIDE_LOADER",
+    HIDE_ALL: "HIDE_LOADERS",
+}

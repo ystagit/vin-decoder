@@ -4,6 +4,7 @@ import Input from '@base/component/Input';
 import Button from '@base/component/Button';
 import Card from '@base/component/Card';
 import Table from '@base/component/Table';
+import DecodeVin from '@vin/component/DecodeVin';
 import LastVin from '@vin/component/LastVin';
 import DecodedVinResult from '@vin/component/DecodedVinResult';
 
@@ -41,20 +42,7 @@ const VinDecoderPageComponent = ({
     return (
         <div>
             <Row wrap>
-                <Card
-                    title={'DECODE VIN'}
-                    buttonName={'DECODE'}
-                    needValidate
-                    onPress={handleClickDecode}
-                >
-                    <Input
-                        maxSize={17}
-                        showCounter
-                        name={'vinCode'}
-                        label={'VIN-code'}
-                        value={vinCode}
-                        onChange={setVinCode} />
-                </Card>
+                <DecodeVin />
                 <LastVin />
             </Row>
             <DecodedVinResult />

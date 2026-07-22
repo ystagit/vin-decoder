@@ -4,6 +4,7 @@ import { Method } from './method';
 
 export const createApiAction = (method, data) => ({
     type: API.REQUEST,
+    showLoader: data.showLoader ?? false,
     apiConfig: getApiConfig(method, data)
 })
 

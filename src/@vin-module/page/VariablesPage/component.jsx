@@ -1,12 +1,17 @@
 import React from 'react';
 import Table from '@base/component/Table';
-import parse from 'html-react-parser';
+import ContentState from '@base/component/ContentState';
 
+import parse from 'html-react-parser';
 import { isEmptyArray } from '@base/helper/common';
 import { useNavigate } from 'react-router-dom';
 
 
-const VariablesPageComponent = ({ vehicleVariables, onGetVehicleVariableList }) => {
+const VariablesPageComponent = ({
+    loading,
+    vehicleVariables,
+    onGetVehicleVariableList
+}) => {
     const [ result, setResult ] = React.useState([]);
     const navigate = useNavigate();
 
@@ -28,6 +33,12 @@ const VariablesPageComponent = ({ vehicleVariables, onGetVehicleVariableList }) 
                 elementName: result[1]?.toUpperCase()
             }
         });
+    }
+
+    if (loading) {
+        return (
+            <ContentState title={'LOADING...'} />
+        )
     }
 
     return (

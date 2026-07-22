@@ -1,11 +1,13 @@
 import React from 'react';
 import Table from '@base/component/Table';
+import ContentState from '@base/component/ContentState';
 
 import { isEmptyArray } from '@base/helper/common';
 import { useParams, useLocation } from 'react-router-dom';
 
 
 const VariableDetailsPageComponent = ({
+    loading,
     variableDetails,
     onGetVariableDetails,
     onClean
@@ -34,6 +36,14 @@ const VariableDetailsPageComponent = ({
             setResult(variableDetails.map((o) => [o.Name, o.Id]));
         }
     }, [variableDetails]);
+
+    if (loading) {
+        return (
+            <ContentState
+                containerStyle={{ padding: '10px' }}
+                title={'LOADING...'} />
+        )
+    }
 
     return (
         <Table

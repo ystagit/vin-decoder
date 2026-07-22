@@ -8,6 +8,7 @@ import { isValidValue, isValidVariable } from '@vin/helper/utils';
 
 
 const DecodedVinResultComponent = ({
+    loading,
     decodeVin
 }) => {
     const [ result, setResult ] = React.useState([]);
@@ -26,7 +27,9 @@ const DecodedVinResultComponent = ({
         <Card
             title={'DECODED VIN RESULT'}
         >
-            {isEmptyArray(result) ? (
+            {loading ? (
+                <ContentState title={'LOADING...'} />
+            ) : isEmptyArray(result) ? (
                 <ContentState title={'NO DATA'} />
             ) : (
                 <Table
