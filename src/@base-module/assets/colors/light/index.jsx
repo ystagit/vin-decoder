@@ -3,6 +3,7 @@ import list from './list';
 import table from './table';
 import tab from './tab';
 import contentState from './content-state';
+import input from './input';
 
 export default {
     text: '#0891b2',
@@ -13,4 +14,5 @@ export default {
     table,
     tab,
     contentState,
+    input,
 }

@@ -44,9 +44,13 @@ const VinDecoderPageComponent = ({
                 <Card
                     title={'DECODE VIN'}
                     buttonName={'DECODE'}
+                    needValidate
                     onPress={handleClickDecode}
                 >
                     <Input
+                        maxSize={17}
+                        showCounter
+                        name={'vinCode'}
                         label={'VIN-code'}
                         value={vinCode}
                         onChange={setVinCode} />

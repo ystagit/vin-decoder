@@ -1,119 +1,15 @@
-import React from 'react';
-import Row from '@base/component/Row';
-import InputType from './types';
+import { connect } from 'react-redux';
+import { validateField } from '@base/reducer/errors/actions';
 
-import './index.css';
+import InputComponent from './component';
 
-const getLabelStyle = ({ disabled, value }) => {
-    const style = {};
+const mapStateToProps = (state, props) => ({
+    colors: state.colors
+})
 
-    if (disabled) {
-        style.color = '#5d5d5d';
-    }
+const mapDispatchToProps = (dispatch, props) => ({
+    onValidateField: (data) =>
+        dispatch(validateField(props.name, data))
+})
 
-    if (value) {
-        style.fontSize = '11px';
-        style.fontWeight = 'bold';
-    }
-
-    return style;
-}
-
-const Input = ({
-        type = InputType.TEXT,
-        args = {},
-        label = '',
-        value = '',
-        placeholder = '',
-        disabled = false,
-        required = false,
-        justLatin = false,
-        showCounter = false,
-        maxSize = 255,
-        onChange,
-        onFocus
-    }) => {
-
-    let input = null;
-
-    const handelChange = (e) => {
-        let { value } = e.target;
-
-        if (maxSize !== 0 && value.length > maxSize) {
-            value = value.substring(0, maxSize);
-        }
-
-        onChange?.(value, args);
-        e.preventDefault();
-    }
-
-    const handleIgnore = (e) => {
-
-        if (e.key === 'Backspace' && !e.target.value) {
-            onChange?.('', args);
-            e.preventDefault();
-            return;
-        }
-
-        if (justLatin && e.key.match(/[^a-z\-_]/i)) {
-            e.preventDefault();
-            return;
-        }
-
-        if (type === 'number' && ['e', 'E', '+', '-', '.'].includes(e.key)) {
-            e.preventDefault();
-            return;
-        }
-    }
-
-    const handleUpdate = (e, focused) => {
-        onFocus?.(focused, args);
-        e.preventDefault();
-    }
-
-    const handleFocus = (e) => handleUpdate(e, true);
-
-    const handleBlur = (e) => handleUpdate(e, false);
-
-    return (
-        <div className={'input-body'}>
-            <Row verticalAlign={'center'}>
-                <div className={'input-container'}>
-                    <input ref={(inputRef) => {
-                        input = inputRef;
-                    }}
-                           className={'input-content primitive-input'}
-                           type={type || InputType.TEXT}
-                           disabled={disabled}
-                           value={value}
-                           placeholder={placeholder}
-                           onChange={handelChange}
-                           onKeyDown={handleIgnore}
-                           onFocus={handleFocus}
-                           onBlur={handleBlur}
-                    />
-                    <div className={'input-label-content'}
-                         style={value ? { top: 0 } : {}}
-                         onClick={() => input?.focus()}
-                    >
-                        <div className={'input-label primitive-label'}
-                             style={getLabelStyle({ disabled, value })}
-                        >
-                            {required &&
-                                <span className={'required-input'}>* </span>
-                            }
-                            {label}
-                        </div>
-                    </div>
-                    {showCounter && maxSize !== 0 &&
-                        <div className={'input-counter-content'}>
-                            <span>{value?.length ?? 0} / {maxSize}</span>
-                        </div>
-                    }
-                </div>
-            </Row>
-        </div>
-    );
-}
-
-export default Input;
+export default connect(mapStateToProps, mapDispatchToProps)(InputComponent);

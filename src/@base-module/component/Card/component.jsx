@@ -1,16 +1,36 @@
 import React from 'react';
 import Button from '@base/component/Button';
 
+import { isEmpty } from '@base/helper/common';
+
 import './index.css';
 
 const Card = ({
     colors,
+    needValidate = false,
+    errors,
     children,
     iconName = null,
     title = null,
     buttonName = null,
     onPress
 }) => {
+    const [hasErrors, setHasErrors] = React.useState(false);
+
+    React.useEffect(() => {
+        setHasErrors(needValidate && !isEmpty(errors));
+    }, [errors]);
+
+    const handlePress = () => {
+        if (!onPress) { return; }
+
+        if (needValidate) {
+            !hasErrors && onPress();
+        } else {
+            onPress();
+        }
+    }
+
     return (
         <div
             className={'card-container'}
@@ -31,16 +51,17 @@ const Card = ({
             <div className={'card-content'}>
                 {children}
             </div>
-            {onPress ? (
-                <div className={'card-bottom'}>
-                    <Button
-                        name={buttonName ?? 'OK'}
-                        style={{
-                            color: colors.card.button,
-                            borderColor: colors.card.button
-                        }}
-                        onClick={onPress} />
-                </div>
+            {onPress
+                ? (
+                    <div className={'card-bottom'}>
+                        <Button
+                            name={buttonName ?? 'OK'}
+                            style={{
+                                color: hasErrors ? colors.disabled : colors.card.button,
+                                borderColor: hasErrors ? colors.disabled : colors.card.button
+                            }}
+                            onClick={handlePress} />
+                    </div>
                 ) : (
                     <div className={'card-bottom'} />
                 )
