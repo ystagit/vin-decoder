@@ -3,11 +3,11 @@ import Row from '@base/component/Row';
 import IconButton from '@base/component/IconButton';
 import ContentState from '@base/component/ContentState';
 
-import { isEmptyArray } from '@base/helper/common';
+import { isEmptyArray, isEmptyString } from '@base/helper/common';
 import './style.css';
 
 
-const TableComponent = ({ colors, headers, items, options, onClick }) => {
+const TableComponent = ({ colors, prefixKey, headers, items, options, onClick }) => {
     const [ columnWidth, setColumnWidth ] = React.useState([]);
 
     React.useEffect(() => {
@@ -32,7 +32,7 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
                         if (headers[i].includes('ICON:')) {
                             return (
                                 <div
-                                    key={'header-' + i}
+                                    key={prefixKey + '-header-' + i}
                                     className={'empty-table-header'}
                                     style={{
                                         width: columnWidth[i],
@@ -44,8 +44,8 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
 
                         return (
                             <div
-                                key={'header-' + i}
-                                className={'table-header'}
+                                key={prefixKey + '-header-' + i}
+                                className={isEmptyString(item) ? 'empty-table-header' :  'table-header'}
                                 style={columnWidth[i] ? {
                                     width: columnWidth[i],
                                     color: colors.table.header,
@@ -61,12 +61,12 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
             {isEmptyArray(items) ? (
                 <ContentState containerStyle={{ padding: '10px' }} title={'NO DATA'} />
             ) : items?.map((innerItems, i) => (
-                <Row key={'row-' + i} className={'table-row'} >
+                <Row key={prefixKey + '-row-' + i} className={'table-row'} >
                     {headers?.map((item, j) => {
                         if (headers[j].includes('ICON:')) {
                             return (
                                 <div
-                                    key={'column-' + j}
+                                    key={prefixKey + '-column-' + j}
                                     className={'table-icon'}
                                     style={columnWidth[j] ? {
                                         width: columnWidth[j],
@@ -88,7 +88,7 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
 
                         return (
                             <div
-                                key={'column-' + j}
+                                key={prefixKey + '-column-' + j}
                                 className={'table-column'}
                                 style={columnWidth[j] ? {
                                     width: columnWidth[j],
@@ -109,4 +109,4 @@ const TableComponent = ({ colors, headers, items, options, onClick }) => {
     )
 }
 
-export default TableComponent;
+export default React.memo(TableComponent);
