@@ -34,7 +34,10 @@ const Card = ({
     return (
         <div
             className={'card-container'}
-            style={{ borderColor: colors.card.border }}
+            style={{
+                borderColor: colors.card.border,
+                '--background-card-color': colors.card.background,
+            }}
         >
             {title &&
                 <div
@@ -55,11 +58,8 @@ const Card = ({
                 ? (
                     <div className={'card-bottom'}>
                         <Button
+                            disabled={hasErrors}
                             name={buttonName ?? 'OK'}
-                            style={{
-                                color: hasErrors ? colors.disabled : colors.card.button,
-                                borderColor: hasErrors ? colors.disabled : colors.card.button
-                            }}
                             onClick={handlePress} />
                     </div>
                 ) : (

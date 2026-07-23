@@ -32,6 +32,7 @@ const TabListComponent = ({ colors, tabs }) => {
                     <Row>
                         {tab.iconName &&
                             <Icon
+                                color={'none'}
                                 name={tab.iconName}
                                 w={'18px'}
                                 h={'18px'} />

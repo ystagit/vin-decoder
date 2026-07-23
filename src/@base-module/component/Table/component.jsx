@@ -25,6 +25,9 @@ const TableComponent = ({ colors, prefixKey, headers, items, options, onClick })
     return (
         <div
             className={'table-container'}
+            style={{
+                background: colors.table.background,
+            }}
         >
             {!isEmptyArray(headers) &&
                 <Row>

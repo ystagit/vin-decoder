@@ -6,22 +6,9 @@ import InputType from '@base/component/Input/input-type';
 
 import './index.css';
 
-const getLabelStyle = ({ disabled, value }) => {
-    const style = {};
-
-    if (disabled) {
-        style.color = '#5d5d5d';
-    }
-
-    if (value) {
-        style.fontSize = '11px';
-        style.fontWeight = 'bold';
-    }
-
-    return style;
-}
 
 const InputComponent = ({
+        colors,
         type = InputType.TEXT,
         args = {},
         label = '',
@@ -83,26 +70,42 @@ const InputComponent = ({
     return (
         <div className={'input-body'}>
             <Row verticalAlign={'center'}>
-                <div className={'input-container'}>
-                    <input ref={(inputRef) => {
-                        input = inputRef;
-                    }}
-                           className={'input-content primitive-input'}
-                           type={type || InputType.TEXT}
-                           disabled={disabled}
-                           value={value}
-                           placeholder={placeholder}
-                           onChange={handelChange}
-                           onKeyDown={handleIgnore}
-                           onFocus={handleFocus}
-                           onBlur={handleBlur}
+                <div
+                    className={'input-container'}
+                >
+                    <input
+                        ref={(inputRef) => {
+                            input = inputRef;
+                        }}
+                        className={'input-content primitive-input'}
+                        style={{
+                            background: colors.input.background,
+                            borderColor: colors.input.border,
+                            color: colors.input.value,
+                        }}
+                        type={type || InputType.TEXT}
+                        disabled={disabled}
+                        value={value}
+                        placeholder={placeholder}
+                        onChange={handelChange}
+                        onKeyDown={handleIgnore}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
                     />
                     <div className={'input-label-content'}
-                         style={value ? { top: 0 } : { top: '30px' }}
-                         onClick={() => input?.focus()}
+                        style={{
+                            top: value ? 0 : '30px',
+                            color: colors.input.label
+                        }}
+                        onClick={() => input?.focus()}
                     >
-                        <div className={'input-label primitive-label'}
-                             style={getLabelStyle({ disabled, value })}
+                        <div
+                            className={'input-label'}
+                            style={{
+                                fontSize: value ? '11px' : null,
+                                fontWeight: value ? 'bold' : null,
+                                color: colors.input.label
+                            }}
                         >
                             {required &&
                                 <span className={'required-input'}>* </span>

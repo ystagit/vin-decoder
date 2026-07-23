@@ -1,7 +1,8 @@
 .card-container {
-    border: 2px solid #def4f4;
+    border: 2px solid;
+    border-color: var(--title-card-color);
     border-radius: 20px;
-    background-color: white;
+    background: var(--background-card-color);
     margin: 1%;
     flex: 1;
     min-width: 380px;
@@ -21,7 +22,7 @@
     padding: 10px 15px 10px 15px;
     font-size: 1.0rem;
     font-weight: 700;
-    border: 1px solid;
+    border-bottom: 1px solid;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     margin-bottom: 10px;

@@ -5,6 +5,7 @@ import Icon from '@base/component/Icon';
 import IconButton from '@base/component/IconButton';
 import Logo from '@base/component/Header/Logo';
 import TabList from '@base/component/Header/TabList';
+import Menu from '@base/component/Menu';
 
 import './index.css';
 
@@ -17,6 +18,9 @@ const Header = () => {
             </Column>
             <Column horizontalAlign={'start'} count={1}>
                 <TabList />
+            </Column>
+            <Column horizontalAlign={'end'} const={10}>
+                <Menu />
             </Column>
         </Row>
 )

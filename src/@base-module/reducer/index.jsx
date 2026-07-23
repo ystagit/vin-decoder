@@ -7,6 +7,7 @@ import loader from './loader/reducer';
 
 import watchApi from './api/saga';
 import watchError from './errors/saga';
+import watchColor from './colors/saga';
 
 export const baseReducers = {
     storage,
@@ -18,4 +19,5 @@ export const baseReducers = {
 export const baseSagas = [
     fork(watchApi),
     fork(watchError),
+    fork(watchColor),
 ]

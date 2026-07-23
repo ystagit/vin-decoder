@@ -1,23 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import logo from '@base/assets/logo/logo.svg';
-import './index.css';
+import LogoComponent from './component';
 
-const Logo = ({}) => {
-    const navigate = useNavigate();
+const mapStateToProps = (state) => ({
+    colors: state.colors,
+})
 
-    const handleClick = () => navigate('/');
-
-    return (
-        <button
-            className={'logo'}
-            onClick={handleClick}
-        >
-            <img src={logo}
-                 width={'75px'}
-                 height={'35px'} />
-        </button>
-    )
-}
-
-export default Logo;
+export default connect(mapStateToProps)(LogoComponent);

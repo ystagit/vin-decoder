@@ -1,3 +1,15 @@
+.disabled-button-content {
+    border: none;
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: #04AA6D;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+}
+
 .button-content {
     border: none;
     border: 1px solid;

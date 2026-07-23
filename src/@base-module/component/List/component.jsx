@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@base/component/Button';
+import Divider from '@base/component/Divider';
 
 import './index.css';
 
@@ -18,7 +19,6 @@ const ListComponent = ({
             {items?.map((item, index) => (
                 <div
                     className={`list-item
-                        ${(index % 2) === 0 && 'grey-list-item'}
                         ${selected === index && 'selected-list-item'}`}
                     style={{
                         color: selected === index ? colors.list.selectedText : colors.list.text,
@@ -29,10 +29,15 @@ const ListComponent = ({
                     onClick={() => onClick(item, index)}
                 >
                     <div style={
-                        typeof item === 'string' && { padding: '10px 15px 10px 15px' }
+                        typeof item === 'string' && { padding: '11px' }
                     } >
                         {item}
                     </div>
+                    {items.length-1 !== index &&
+                        <Divider
+                            width={'80%'}
+                            align={'center'} />
+                    }
                 </div>
             ))}
         </div>

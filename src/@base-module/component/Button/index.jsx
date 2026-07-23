@@ -1,34 +1,9 @@
-import React from 'react';
-import './index.css';
+import { connect } from 'react-redux';
 
-const Button = ({
-        name,
-        style = {},
-        args = {},
-        disabled = false,
-        onClick,
-    }) => {
+import ButtonComponent from './component';
 
-    const handleClick = (e) => {
+const mapStateToProps = (state) => ({
+    colors: state.colors,
+})
 
-        if (!disabled) {
-            onClick?.(args);
-        }
-
-        e.preventDefault();
-    }
-
-
-    return (
-        <button
-            className={'button-content button-primitive'}
-            style={style}
-            disabled={disabled}
-            onClick={handleClick}
-        >
-            {name}
-        </button>
-    );
-}
-
-export default Button;
+export default connect(mapStateToProps)(ButtonComponent);

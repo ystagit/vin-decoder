@@ -9,7 +9,13 @@ const InputCounterComponent = ({ colors, value, maxSize }) => {
     }
 
     return (
-        <div className={'input-counter-content'}>
+        <div
+            className={'input-counter-content'}
+            style={{
+                color: colors.input.counter,
+                fontWeight: 700
+            }}
+        >
             <span>{value?.length ?? 0} / {maxSize}</span>
         </div>
     )

@@ -10,6 +10,7 @@
     min-width: 200px;
     border-bottom: 3px solid;
     border-color: var(--table-border-color);
+    background: var(--table-background-color);
     opacity: 0;
     animation: headerAppear 0.2s linear forwards;
 }
@@ -56,6 +57,7 @@
     min-width: 200px;
     border-top: solid;
     border-color: var(--table-border-color);
+    background: var(--table-background-color);
 }
 
 .table-value {

@@ -37,7 +37,9 @@ const VariablesPageComponent = ({
 
     if (loading) {
         return (
-            <ContentState title={'LOADING...'} />
+            <div style={{ paddingTop: '10px' }}>
+                <ContentState title={'LOADING...'} />
+            </div>
         )
     }
 
