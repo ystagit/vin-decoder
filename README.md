@@ -1,16 +1,36 @@
-# React + Vite
+# VIN Decoder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It's Single Page Application (SPA) for decoding Vehicle Identification Number (VIN) using the NHTSA API.
 
-Currently, two official plugins are available:
+## Demo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Feature
+- VIN decoding using NHTSA API;
+- VIN decoder page:
+  - VIN-code input with validation;
+  - Display of the last 3 decoded VINs;
+  - Display a decoded data of the VINs;
+- Vehicle variables page:
+  - Show all variables and description of each a variable;
+- Variable details page:
+  - Show detail information about a selected variable;
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## API
+The App using the following NHSTA APIs:
+URL: https://vpic.nhtsa.dot.gov/api/
+PATHs:
+- Decode vin: ```vehicles/decodevin/${vinId}?format=json```
+- Get vehicle variables: ```vehicles/GetVehicleVariableList?format=json```
+- Get variable value: ```vehicles/GetVehicleVariableValuesList/${variableId}?format=json```
 
-## Expanding the ESLint configuration
+## Installation
+1. Clone 'vin-decoder' project:
+```git clone https://github.com/ystagit/vin-decoder.git```
+2. Go to the project's root
+3. Install modules:
+```npm install```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Start dev server
+1. Start server: ```npm run dev```
+2. Go to ```http://localhost:5173```
